@@ -1,12 +1,9 @@
-import BannerCarousel from "@components/banner/banner-carousel";
 import Layout from "@components/layout/main";
-import { Card, Typography } from "antd";
 import React, { ReactElement } from "react";
-import Image from "next/image";
 import Banner from "@components/banner/banner";
 import SiteFeatures from "@components/site-features/site-features";
+import DealOfDay from "@components/deal-of-day/deal-of-day";
 
-const { Title } = Typography;
 interface Props {}
 
 function Home({}: Props): ReactElement {
@@ -14,6 +11,7 @@ function Home({}: Props): ReactElement {
     <Layout>
       <Banner />
       <SiteFeatures />
+      <DealOfDay />
     </Layout>
   );
 }

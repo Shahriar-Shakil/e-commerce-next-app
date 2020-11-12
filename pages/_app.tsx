@@ -1,4 +1,6 @@
 import "@styles/index.css";
+import "@styles/customStyle.css";
+import "@styles/effects.css";
 import "antd/dist/antd.css";
 import { SWRConfig } from "swr";
 

@@ -17,41 +17,6 @@
 body {
   font-family: "Work Sans", sans-serif !important;
 }
-#components-layout-demo-fixed .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+.ml-7px {
+  margin-left: 7px !important;
 }
-.site-layout .site-layout-background {
-  background: #fff;
-}
-.ant-input-group-addon:last-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding: 0;
-  border: 0;
-}
-.thumbs-wrapper {
-  display: none;
-}
-/* .small-header { */
-/* max-height: 50px;
-  overflow: hidden; */
-/* } */
-/* .select-before {
-  width: 100px;
-}
-
-.select-after {
-  width: 80px;
-} */
-
-/* [data-theme="compact"] .select-before {
-  width: 71px;
-}
-
-[data-theme="compact"] .select-after {
-  width: 65px;
-} */

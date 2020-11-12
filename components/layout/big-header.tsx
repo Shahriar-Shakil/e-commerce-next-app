@@ -22,7 +22,7 @@ interface Props {}
 export default function BigHeader({}: Props): ReactElement {
   return (
     <AntHeader
-      className="bg-yellow-600 "
+      className="bg-yellow-400 "
       style={{
         position: "",
         zIndex: 1,
