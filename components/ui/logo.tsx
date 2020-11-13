@@ -5,7 +5,7 @@ interface Props {}
 
 export default function Logo({}: Props): ReactElement {
   return (
-    <Title level="2" className="m-0">
+    <Title level="2" className="mb-0">
       mart<span className="text-white">fury</span>
     </Title>
   );

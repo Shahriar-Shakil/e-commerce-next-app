@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import Head from "next/head";
-import { useProducts } from "@data/use-products";
 import {
   Button,
   Card,
@@ -12,20 +11,19 @@ import {
   Typography,
 } from "antd";
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
-import { Avatar } from "antd";
 import Slider from "react-slick";
 import Link from "next/link";
-const { Title } = Typography;
-interface Props {}
 
-export default function DealOfDay({}: Props): ReactElement {
-  const { loading, products } = useProducts();
-  const catagories = products?.map((item) => item.category);
-  const { Countdown } = Statistic;
-  const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; // Moment is also OK
-  function onFinish() {
-    console.log("finished!");
-  }
+const { Title } = Typography;
+interface Props {
+  products: Array<any>;
+  loading: boolean;
+}
+
+export default function ProductsSlider({
+  products,
+  loading,
+}: Props): ReactElement {
   var settings = {
     dots: false,
     infinite: true,
@@ -69,8 +67,8 @@ export default function DealOfDay({}: Props): ReactElement {
                   type="text"
                   size="large"
                   className=" text-gray-500
-                   hover:text-white
-                   hover:bg-yellow-500"
+                       hover:text-white
+                       hover:bg-yellow-500"
                   shape="circle"
                 >
                   <AiOutlineShopping className="ml-7px" size="24" />
@@ -90,8 +88,11 @@ export default function DealOfDay({}: Props): ReactElement {
             <span className="pl-3 text-red-500">18% off</span>
           </p>
           <Link href="">
-            <a className="hover:text-yellow-500">
-              Sound Intone I65 Earphone White Version
+            <a
+              className="hover:text-yellow-500  line-clamp-2"
+              title={item.title}
+            >
+              {item.title}
             </a>
           </Link>
           <br />
@@ -108,6 +109,7 @@ export default function DealOfDay({}: Props): ReactElement {
   });
   return (
     <>
+      {" "}
       <Head>
         <link
           rel="stylesheet"
@@ -120,28 +122,8 @@ export default function DealOfDay({}: Props): ReactElement {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-      </Head>
-      <section className="">
-        <div className="flex justify-between items-center">
-          <Space size={30}>
-            <Title level={3} className="font-thin m-0">
-              Deal of the Day
-            </Title>
-            <Countdown title="End in:" value={deadline} onFinish={onFinish} />
-          </Space>
-          <Button
-            type="text"
-            className="  border-black border-t-0 border-r-0  border-l-0  border-b-1 rounded-none hover:text-yellow-500 bg-transparent"
-          >
-            View all
-          </Button>
-        </div>
-
-        <Divider className="my-2 mb-10"></Divider>
-        <div>
-          <Slider {...settings}>{items}</Slider>
-        </div>
-      </section>
+      </Head>{" "}
+      <Slider {...settings}>{items}</Slider>
     </>
   );
 }

@@ -8,6 +8,9 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+.ant-layout-header {
+  background-color: #fcb800 !important;
+}
 .ant-input-group-addon:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -80,4 +83,25 @@
 .ant-card:hover .product-actions {
   visibility: visible;
   transform: translate(0%, 0);
+}
+.ant-layout-header {
+  z-index: 99999 !important;
+}
+/* text turncate from 2nd line */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 40px;
+}
+/* footer */
+.contacts-list ul li {
+  padding: 7px 0;
+}
+.contacts-list ul li a {
+  color: #666666;
+}
+hr.full {
+  margin: 20px -10000px;
 }

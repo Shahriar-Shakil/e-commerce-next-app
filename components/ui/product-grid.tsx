@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import Head from "next/head";
-import { useProducts } from "@data/use-products";
 import {
   Button,
   Card,
@@ -12,20 +11,24 @@ import {
   Typography,
 } from "antd";
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
-import { Avatar } from "antd";
 import Slider from "react-slick";
 import Link from "next/link";
+
 const { Title } = Typography;
 interface Props {
-    products:Array<any></any>
+  products: Array<any>;
+  loading: boolean;
 }
 
-export default function ProductGridView({}: Props): ReactElement {
+export default function ProductGrid({
+  products,
+  loading,
+}: Props): ReactElement {
   const items = products?.map((item) => {
     return (
       <Card
         bordered={false}
-        style={{ width: 300 }}
+        style={{ width: "auto" }}
         cover={
           <>
             <img
@@ -76,8 +79,11 @@ export default function ProductGridView({}: Props): ReactElement {
             <span className="pl-3 text-red-500">18% off</span>
           </p>
           <Link href="">
-            <a className="hover:text-yellow-500">
-              Sound Intone I65 Earphone White Version
+            <a
+              className="hover:text-yellow-500  line-clamp-2"
+              title={item.title}
+            >
+              {item.title}
             </a>
           </Link>
           <br />
@@ -92,5 +98,5 @@ export default function ProductGridView({}: Props): ReactElement {
       </Card>
     );
   });
-  return <div></div>;
+  return <div className="grid grid-cols-7 ">{items}</div>;
 }

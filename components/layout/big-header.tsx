@@ -1,5 +1,9 @@
 import React from "react";
-import { AiOutlineBars, AiOutlineCaretDown } from "react-icons/ai";
+import {
+  AiOutlineBars,
+  AiOutlineCaretDown,
+  AiOutlineDown,
+} from "react-icons/ai";
 
 import {
   Button,
@@ -27,12 +31,12 @@ export default function BigHeader({}: Props): ReactElement {
         position: "",
         zIndex: 1,
         width: "100%",
-        padding: "0 0px",
+        padding: "0 100px",
         height: "auto",
       }}
     >
       <div className="flex items-center py-5 justify-between">
-        <div className="w-1/2  flex  justify-center lg:w-1/5">
+        <div className="w-1/2    lg:w-1/5">
           <Logo />
         </div>
         {/* <DepartmentList /> */}
@@ -43,20 +47,51 @@ export default function BigHeader({}: Props): ReactElement {
           <UserActionsGroup />
         </div>
       </div>
-      <Divider className="m-0" />
-      <div className=" hidden lg:flex items-center small-header">
-        <div className="w-1/5 text-center">
+      <hr className="full border-gray-800 my-0" />
+      <div className=" hidden lg:flex items-center   small-header">
+        <div className="w-1/5 ">
           <DepartmentList />
         </div>
-        <div className="flex w-3/5 justify-between">
+        <div className="flex w-4/5 ">
           <div className="left-nav">
             <NavigationDropdown />
           </div>
-          <div className="right-nav">
-            <NavigationDropdown />
+          <div className="right-nav ml-auto">
+            <a href="">Sell on Martfurry</a> | <a href="">Track your order</a> |{" "}
+            <Dropdown overlay={CurrencyOpt} placement="bottomCenter">
+              <a
+                className="hvr-overline-from-left ant-dropdown-link inline-flex items-center text-black "
+                onClick={(e) => e.preventDefault()}
+              >
+                <Space>
+                  <span className="font-bold text-base ">USD</span>
+                  <AiOutlineDown size="16" />
+                </Space>
+              </a>
+            </Dropdown>
           </div>
         </div>
       </div>
     </AntHeader>
   );
 }
+const CurrencyOpt = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="">
+        USD
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="">
+        Euro
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="">
+        GBP
+      </a>
+    </Menu.Item>
+    <Menu.Item danger>a danger item</Menu.Item>
+  </Menu>
+);

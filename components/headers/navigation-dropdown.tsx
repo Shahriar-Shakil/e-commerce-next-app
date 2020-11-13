@@ -8,7 +8,7 @@ export default function NavigationDropdown({}: Props): ReactElement {
   return (
     <Space>
       <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <a href="" className="text-black hover:text-white flex items-center ">
+        <a href="" className="text-black  flex items-center ">
           Home
           <span className="px-1">
             <AiOutlineDown />
@@ -16,7 +16,7 @@ export default function NavigationDropdown({}: Props): ReactElement {
         </a>
       </Dropdown>{" "}
       <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <a href="" className="text-black hover:text-white flex items-center ">
+        <a href="" className="text-black  flex items-center ">
           Shop
           <span className="px-1">
             <AiOutlineDown />
@@ -24,7 +24,7 @@ export default function NavigationDropdown({}: Props): ReactElement {
         </a>
       </Dropdown>{" "}
       <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <a href="" className="text-black hover:text-white flex items-center ">
+        <a href="" className="text-black  flex items-center ">
           Pages
           <span className="px-1">
             <AiOutlineDown />
@@ -32,7 +32,7 @@ export default function NavigationDropdown({}: Props): ReactElement {
         </a>
       </Dropdown>{" "}
       <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <a href="" className="text-black hover:text-white flex items-center ">
+        <a href="" className="text-black  flex items-center ">
           Blog
           <span className="px-1">
             <AiOutlineDown />
