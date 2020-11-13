@@ -13,6 +13,8 @@ import {
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
 import Slider from "react-slick";
 import Link from "next/link";
+import QuickView from "./Quick-view";
+import LazyLoadImageComponent from "./LazyLoadImage";
 
 const { Title } = Typography;
 interface Props {
@@ -40,10 +42,14 @@ export default function ProductsSlider({
         style={{ width: 300 }}
         cover={
           <>
-            <img
-              className="products-img"
-              alt={item.category}
-              src={item.image}
+            <LazyLoadImageComponent
+              className="grid-layout-img"
+              image={{
+                alt: "alt",
+                height: 250,
+                width: "auto",
+                src: item?.image,
+              }}
             />
             <div className="product-actions">
               <Space size="large">
@@ -55,14 +61,7 @@ export default function ProductsSlider({
                 >
                   <AiOutlineHeart className="ml-7px" size="24" />
                 </Button>
-                <Button
-                  type="text"
-                  size="large"
-                  className=" text-gray-500 hover:bg-yellow-500 hover:text-white"
-                  shape="circle"
-                >
-                  <AiFillEye className="ml-7px" size="24" />
-                </Button>
+                <QuickView productId={item.id} />
                 <Button
                   type="text"
                   size="large"
@@ -83,7 +82,7 @@ export default function ProductsSlider({
           <p className="m-0">Young Shp</p>
           <Divider className="m-1"></Divider>
           <p className="text-base font-bold m-0">
-            <span className="text-green-500">$32.99</span>{" "}
+            <span className="text-green-500">${item?.price}</span>{" "}
             <del className=" text-sm text-gray-500">$41.00</del>{" "}
             <span className="pl-3 text-red-500">18% off</span>
           </p>

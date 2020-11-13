@@ -57,7 +57,14 @@ export default function BigHeader({}: Props): ReactElement {
             <NavigationDropdown />
           </div>
           <div className="right-nav ml-auto">
-            <a href="">Sell on Martfurry</a> | <a href="">Track your order</a> |{" "}
+            <a href="" className="text-black ">
+              Sell on Martfurry
+            </a>{" "}
+            |{" "}
+            <a href="" className="text-black ">
+              Track your order
+            </a>{" "}
+            |{" "}
             <Dropdown overlay={CurrencyOpt} placement="bottomCenter">
               <a
                 className="hvr-overline-from-left ant-dropdown-link inline-flex items-center text-black "
@@ -92,6 +99,5 @@ const CurrencyOpt = (
         GBP
       </a>
     </Menu.Item>
-    <Menu.Item danger>a danger item</Menu.Item>
   </Menu>
 );

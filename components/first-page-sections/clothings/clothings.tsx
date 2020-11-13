@@ -7,10 +7,14 @@ interface Props {}
 
 export default function ClothingSection({}: Props): ReactElement {
   const { loading, products } = useProducts();
+  const clothingsProduct = products?.filter(
+    (item) =>
+      item.category === "women clothing" || item.category === "men clothing"
+  );
   return (
     <section className="my-5">
       <CategoryHeader title={"Clothings"} />
-      <ProductGrid loading={loading} products={products?.slice(0, 7)} />
+      <ProductGrid loading={loading} products={clothingsProduct?.slice(0, 7)} />
     </section>
   );
 }

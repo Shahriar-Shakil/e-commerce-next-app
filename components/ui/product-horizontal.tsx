@@ -13,6 +13,7 @@ import {
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
 import Slider from "react-slick";
 import Link from "next/link";
+import LazyLoadImageComponent from "./LazyLoadImage";
 
 const { Title } = Typography;
 interface Props {
@@ -28,7 +29,15 @@ export default function ProductHorizontal({
     return (
       <Card bordered={false} style={{ width: "auto" }} className="p-5">
         <div className="flex ">
-          <img src={item.image} className="w-32 mr-auto my-auto h-32"></img>
+          <LazyLoadImageComponent
+            className="horizontal-card-img "
+            image={{
+              alt: "alt",
+              height: "",
+              width: "auto",
+              src: item?.image,
+            }}
+          />
           <div className="w-56">
             <Link href="">
               <a

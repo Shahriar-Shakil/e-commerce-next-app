@@ -6,7 +6,7 @@ interface Props {}
 
 export default function BannerCarousel({}: Props): ReactElement {
   return (
-    <Carousel>
+    <Carousel autoplay>
       <div>
         <img src="/assets/banner-img/slide-1.jpg" alt="Picture of the author" />
       </div>
