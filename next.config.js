@@ -6,4 +6,7 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+   // Target must be serverless
+   target: "serverless",
 };
+ 
