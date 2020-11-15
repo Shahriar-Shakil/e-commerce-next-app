@@ -10,9 +10,10 @@ const { Content, Footer } = AntLayout;
 
 interface Props {
   children: any;
+  className?: string;
 }
 
-export default function Layout({ children }: Props): ReactElement {
+export default function Layout({ children, className }: Props): ReactElement {
   const scrollPosition = useWindowPosition();
   const [fixedHeader, setFixedHeader] = useState(false);
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function Layout({ children }: Props): ReactElement {
       {fixedHeader ? <FixedHeader /> : <BigHeader />}
 
       <Content
-        className="bg-white"
+        className={`bg-white ${className}`}
         // style={{ padding: "0 100px", marginTop: 64 }}
         style={{
           padding: "0 100px",
@@ -36,7 +37,7 @@ export default function Layout({ children }: Props): ReactElement {
           marginTop: fixedHeader ? 65 : 0,
         }}
       >
-        <div className="" style={{ padding: "24px 0", minHeight: 2000 }}>
+        <div className={className} style={{ padding: "24px 0" }}>
           {children}
         </div>
       </Content>

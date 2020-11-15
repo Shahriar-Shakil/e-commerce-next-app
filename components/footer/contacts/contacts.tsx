@@ -19,7 +19,7 @@ export default function Contacts({}: Props): ReactElement {
         </div>
         <div className="">
           <p className="m-0 text-gray-500">Call us 24/7</p>
-          <h3 className="my-4 font-bold text-2xl text-yellow-600">
+          <h3 className="my-4 font-bold text-2xl text-primary">
             1800 97 97 69
           </h3>
           <p>502 New Design Str, Melbourne, Australia contact@martfury.co</p>

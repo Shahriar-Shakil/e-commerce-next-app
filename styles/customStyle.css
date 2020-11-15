@@ -8,9 +8,7 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
-.ant-layout-header {
-  background-color: #fcb800 !important;
-}
+
 .ant-input-group-addon:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -85,7 +83,7 @@
   transform: translate(0%, 0);
 }
 .ant-layout-header {
-  z-index: 99999 !important;
+  z-index: 99 !important;
 }
 /* text turncate from 2nd line */
 .line-clamp-2 {
@@ -112,4 +110,7 @@ hr.full {
   height: 8rem;
   width: 8rem;
   padding-right: 10px;
+}
+.ant-dropdown {
+  z-index: 1000000 !important;
 }

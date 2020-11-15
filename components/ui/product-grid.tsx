@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import Head from "next/head";
 import {
   Button,
@@ -27,6 +27,12 @@ export default function ProductGrid({
   products,
   loading,
 }: Props): ReactElement {
+  const [quickView, setQuickView] = useState({
+    visibility: false,
+    productId: "",
+  });
+  const handleQuickView = (id) =>
+    setQuickView({ visibility: true, productId: id });
   const items = products?.map((item) => {
     return (
       <Card
@@ -43,28 +49,34 @@ export default function ProductGrid({
                 src: item?.image,
               }}
             />
-            {/* <img
-              className="products-img"
-              alt={item.category}
-              src={item.image}
-            /> */}
+
             <div className="product-actions">
               <Space size="large">
                 <Button
                   type="text"
                   size="large"
-                  className=" text-gray-500 hover:bg-yellow-500 hover:text-white"
+                  className=" text-gray-500 hover:bg-primary hover:text-white"
                   shape="circle"
                 >
                   <AiOutlineHeart className="ml-7px" size="24" />
                 </Button>
-                <QuickView productId={item.id} />
+                <Button
+                  onClick={() => handleQuickView(item.id)}
+                  type="text"
+                  size="large"
+                  className=" text-gray-500 hover:bg-primary hover:text-white"
+                  shape="circle"
+                >
+                  <Tooltip title="Quick View" placement="bottomLeft">
+                    <AiFillEye className="ml-7px" size="24" />
+                  </Tooltip>
+                </Button>
                 <Button
                   type="text"
                   size="large"
                   className=" text-gray-500
                        hover:text-white
-                       hover:bg-yellow-500"
+                       hover:bg-primary"
                   shape="circle"
                 >
                   <AiOutlineShopping className="ml-7px" size="24" />
@@ -103,5 +115,12 @@ export default function ProductGrid({
       </Card>
     );
   });
-  return <div className="grid grid-cols-7 ">{items}</div>;
+  return (
+    <div className="grid grid-cols-7 ">
+      {items}
+      <>
+        <QuickView quickView={quickView} setQuickView={setQuickView} />
+      </>
+    </div>
+  );
 }

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import Head from "next/head";
 import {
   Button,
@@ -8,13 +8,15 @@ import {
   Rate,
   Space,
   Statistic,
+  Tooltip,
   Typography,
 } from "antd";
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
 import Slider from "react-slick";
 import Link from "next/link";
-import QuickView from "./Quick-view";
+// import QuickView from "./Quick-view";
 import LazyLoadImageComponent from "./LazyLoadImage";
+import QuickView from "./Quick-view";
 
 const { Title } = Typography;
 interface Props {
@@ -35,6 +37,12 @@ export default function ProductsSlider({
     arrows: true,
     className: "myCustomCarousel",
   };
+  const [quickView, setQuickView] = useState({
+    visibility: false,
+    productId: "",
+  });
+  const handleQuickView = (id) =>
+    setQuickView({ visibility: true, productId: id });
   const items = products?.map((item) => {
     return (
       <Card
@@ -56,18 +64,28 @@ export default function ProductsSlider({
                 <Button
                   type="text"
                   size="large"
-                  className=" text-gray-500 hover:bg-yellow-500 hover:text-white"
+                  className=" text-gray-500 hover:bg-primary hover:text-white"
                   shape="circle"
                 >
                   <AiOutlineHeart className="ml-7px" size="24" />
                 </Button>
-                <QuickView productId={item.id} />
+                <Button
+                  onClick={() => handleQuickView(item.id)}
+                  type="text"
+                  size="large"
+                  className=" text-gray-500 hover:bg-primary hover:text-white"
+                  shape="circle"
+                >
+                  <Tooltip title="Quick View" placement="bottomLeft">
+                    <AiFillEye className="ml-7px" size="24" />
+                  </Tooltip>
+                </Button>
                 <Button
                   type="text"
                   size="large"
                   className=" text-gray-500
                        hover:text-white
-                       hover:bg-yellow-500"
+                       hover:bg-primary"
                   shape="circle"
                 >
                   <AiOutlineShopping className="ml-7px" size="24" />
@@ -123,6 +141,7 @@ export default function ProductsSlider({
         />
       </Head>{" "}
       <Slider {...settings}>{items}</Slider>
+      <QuickView quickView={quickView} setQuickView={setQuickView} />
     </>
   );
 }

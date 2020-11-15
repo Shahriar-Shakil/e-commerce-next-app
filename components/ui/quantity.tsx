@@ -1,11 +1,17 @@
 import { Button } from "antd";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { quantitySetter } from "recoil/atoms";
 
-interface Props {}
+interface Props {
+  // quantity: number;
+  // setQuantity: any;
+}
 
 export default function Quantity({}: Props): ReactElement {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useRecoilState(quantitySetter);
+
   const handleIncrease = () => {
     if (quantity < 99) {
       setQuantity((prev) => prev + 1);

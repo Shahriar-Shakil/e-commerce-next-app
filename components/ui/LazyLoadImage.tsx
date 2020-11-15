@@ -9,7 +9,7 @@ interface Props {
     src: string;
     width: number | string;
   };
-  className: string;
+  className?: string;
 }
 
 export default function LazyLoadImageComponent({

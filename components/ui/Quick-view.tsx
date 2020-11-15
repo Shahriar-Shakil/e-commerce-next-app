@@ -1,6 +1,8 @@
 import { useSingleProduct } from "@data/use-single-product";
+import { openNotificationWithIcon } from "@lib/notification-message";
 import { Button, Divider, Image, Rate, Skeleton, Space, Tooltip } from "antd";
 import Modal from "antd/lib/modal/Modal";
+import { PersistenceObserver } from "pages/_app";
 import React, { ReactElement, useState } from "react";
 import {
   AiFillEye,
@@ -11,38 +13,70 @@ import {
   AiOutlineMinus,
   AiOutlinePlus,
 } from "react-icons/ai";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { cart, quantitySetter } from "recoil/atoms";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import LazyLoadImage from "./LazyLoadImage";
 import Quantity from "./quantity";
 
 interface Props {
-  productId: string;
+  quickView: {
+    visibility: boolean;
+    productId: number | string;
+  };
+  setQuickView: any;
 }
 
-export default function QuickView({ productId }: Props): ReactElement {
-  const [quickView, setQuickView] = useState(false);
-  const handleClick = () => [setQuickView(true)];
-  console.log(productId, "id");
-  const { item, loading } = useSingleProduct(quickView ? productId : null);
+export default function QuickView({
+  quickView,
+  setQuickView,
+}: Props): ReactElement {
+  const [quantity, setQuantity] = useRecoilState(quantitySetter);
+
+  const { item, loading } = useSingleProduct(
+    quickView.productId ? quickView.productId : null
+  );
+  const handleCloseModal = () => {
+    setQuickView(() => ({ ...quickView, visibility: false }));
+    setQuantity(1);
+  };
+  const setCart = useSetRecoilState(cart);
+
+  const handleAddCart = () => {
+    openNotificationWithIcon(
+      "success",
+      "This product has been added to your cart!"
+    );
+    if (quantity) {
+      setCart((prev) => {
+        const otherProducts = prev.cartItems.filter(
+          (item) => item.id !== quickView.productId
+        );
+        const filterCartItem = prev.cartItems
+          .filter((fitem, i, self) => fitem.id === quickView.productId)
+          .map((item) => ({ ...item, quantity: item.quantity + quantity }));
+        if (filterCartItem.length) {
+          return {
+            ...prev,
+            cartItems: [...otherProducts, ...filterCartItem],
+          };
+        } else
+          return {
+            ...prev,
+            cartItems: [...prev?.cartItems, { ...item, quantity: quantity }],
+          };
+      });
+    }
+  };
+
   return (
     <>
-      <Button
-        onClick={handleClick}
-        type="text"
-        size="large"
-        className=" text-gray-500 hover:bg-yellow-500 hover:text-white"
-        shape="circle"
-      >
-        <Tooltip title="Quick View" placement="bottomLeft">
-          <AiFillEye className="ml-7px" size="24" />
-        </Tooltip>
-      </Button>
       <Modal
         title={item?.title}
-        visible={quickView}
+        visible={quickView.visibility}
         footer={null}
         width={1024}
-        onCancel={() => setQuickView(false)}
+        onCancel={handleCloseModal}
       >
         <div className="flex items-start justify-between ">
           <div className="max-w-md flex-grow w-2/5">
@@ -98,13 +132,14 @@ export default function QuickView({ productId }: Props): ReactElement {
                   <Quantity />
                   <Button
                     size="large"
-                    className="bg-black border-none text-white px-5 font-bold text-lg hover:bg-orange-400"
+                    className="bg-black border-none text-white px-5 font-bold text-lg hover:bg-primary"
+                    onClick={handleAddCart}
                   >
                     Add to cart
                   </Button>
                   <Button
                     size="large"
-                    className="bg-orange-400 border-none text-black px-5 font-bold text-lg hover:bg-black hover:text-white"
+                    className="bg-primary border-none text-black px-5 font-bold text-lg hover:bg-black hover:text-white"
                   >
                     Buy Now
                   </Button>
