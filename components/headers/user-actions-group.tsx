@@ -1,5 +1,5 @@
 import CartDropdown from "@components/ui/cart-dropdown";
-import { Badge, Dropdown, Menu, Space } from "antd";
+import { Badge, Button, Dropdown, Menu, Space } from "antd";
 import Link from "next/link";
 import React, { ReactElement } from "react";
 import {
@@ -9,17 +9,25 @@ import {
 } from "react-icons/ai";
 import { useRecoilValue } from "recoil";
 import { cart } from "recoil/atoms";
-import { cartUpdate } from "recoil/selectors";
+import { cartUpdate, wishListSelector } from "recoil/selectors";
 import UserPlaceholder from "svgr/user-placeholder";
 
 interface Props {}
 
 export default function UserActionsGroup({}: Props): ReactElement {
   const cartState = useRecoilValue(cartUpdate);
+  const wishListState = useRecoilValue(wishListSelector);
   return (
     <Space size={20}>
-      <Badge count={23} className="block hover:text-white">
-        <AiOutlineHeart size="32" />
+      <Badge
+        count={wishListState?.wishlistTotal}
+        className="block hover:text-white"
+      >
+        <Link href="/wishlist">
+          <a className="text-black">
+            <AiOutlineHeart size="32" />
+          </a>
+        </Link>
       </Badge>
       <Badge
         count={cartState.cartItems?.length ? cartState.cartItems?.length : null}

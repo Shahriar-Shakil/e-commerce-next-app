@@ -12,7 +12,6 @@ interface Props {}
 export default function CartDropdown({}: Props): ReactElement {
   const cartState = useRecoilValue(cartUpdate);
   const setCartState = useSetRecoilState(cart);
-  //   console.log(cartState, "state");
   const handleClear = (id) => {
     setCartState((prev) => {
       const filterCartList = prev.cartItems.filter((item) => item.id !== id);

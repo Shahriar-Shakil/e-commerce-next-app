@@ -8,7 +8,7 @@ interface Props {}
 const breadCrumbText = (text) => {
   if (text === "cart") {
     return "Shopping cart";
-  }
+  } else return text.toUpperCase();
 };
 export default function Breadcrumb({}: Props): ReactElement {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function Breadcrumb({}: Props): ReactElement {
       return (
         <AntBreadcrumb.Item>
           <Link href={`/${item}`}>
-            <a>{breadCrumbText(item)}</a>
+            <a className="hover:text-blue-500">{breadCrumbText(item)}</a>
           </Link>
         </AntBreadcrumb.Item>
       );
@@ -29,37 +29,10 @@ export default function Breadcrumb({}: Props): ReactElement {
     <AntBreadcrumb className="bg-gray-200 px-56 py-4">
       <AntBreadcrumb.Item>
         <Link href="/">
-          <a>Home</a>
+          <a className="">HOME</a>
         </Link>
       </AntBreadcrumb.Item>
       {item}
     </AntBreadcrumb>
   );
 }
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        General
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Layout
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        Navigation
-      </a>
-    </Menu.Item>
-  </Menu>
-);

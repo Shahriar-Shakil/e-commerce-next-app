@@ -17,6 +17,7 @@ import Link from "next/link";
 // import QuickView from "./Quick-view";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import QuickView from "./Quick-view";
+import AddWishList from "./add-wish-list";
 
 const { Title } = Typography;
 interface Props {
@@ -61,14 +62,7 @@ export default function ProductsSlider({
             />
             <div className="product-actions">
               <Space size="large">
-                <Button
-                  type="text"
-                  size="large"
-                  className=" text-gray-500 hover:bg-primary hover:text-white"
-                  shape="circle"
-                >
-                  <AiOutlineHeart className="ml-7px" size="24" />
-                </Button>
+                <AddWishList itemToAdd={item} />
                 <Button
                   onClick={() => handleQuickView(item.id)}
                   type="text"

@@ -20,4 +20,9 @@ const updateQuantity = atom({
   key: "updateQuantity",
   default: { id: null, action: "" },
 });
-export { auth, cart, wishlist, quantitySetter, updateQuantity };
+const wishlistToCart = atom({
+  key: "wishlistToCart",
+  default: null,
+});
+
+export { auth, cart, wishlist, quantitySetter, updateQuantity, wishlistToCart };
