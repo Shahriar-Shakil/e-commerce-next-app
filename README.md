@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
 
@@ -9,22 +9,18 @@ npm run dev
 # or
 yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technology 
+- Next js . 
+The React Framework
+for Production [Learn Next](https://nextjs.org/)
+- Typescript
+- Ant Design  [World Second Most Popular UI library ] (https://ant.design/)
+- Tailwind CSS.  This CSS frameworks is realy great . I feel Its suite me . Its make css So much easy for anyone.  [visit heare](https://tailwindcss.com/)
+- Recoil for State management
+Its New Tech That I used First Time In This Project . Its a Fantastic alternative of Redux. Also Recoil Is Made By Facebook. Its State managment almost Like Rect Default State Hooks. 
+-- All State State persist to Browser local storage 
+Scince Recoil Js is new And its api is rapidy changes over the year , its have some unstable api to persist state on browser storage . So I used it to rehydrate my Recoil State .
+### Note: This package use unstable hook useTransactionObservation_UNSTABLE. As far it will be stable I wil change it as soon as posible.
+[recoil](https://recoil.org)
+- SWR for aplication Side effects
+last but not the least SWR I a powerfull tools for API integration on this app.SWR is a React Hooks library for remote data fetching. The name “SWR” is derived from stale-while-revalidate  [SWR](https://github.com/vercel/swr)
