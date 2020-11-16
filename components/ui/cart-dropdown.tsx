@@ -27,7 +27,7 @@ export default function CartDropdown({}: Props): ReactElement {
         <img src={item.image} alt={item.title} className="w-16 h-16 " />
         <div className="px-5 w-9/12 ml-auto">
           <div className="flex">
-            <Link href="">
+            <Link href={`/shop/products/${item.id}`}>
               <a className="hover:text-primary">{item.title}</a>
             </Link>
             <Button type="text" onClick={() => handleClear(item.id)}>

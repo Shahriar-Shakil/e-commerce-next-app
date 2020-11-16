@@ -29,17 +29,22 @@ export default function ProductHorizontal({
     return (
       <Card bordered={false} style={{ width: "auto" }} className="p-5">
         <div className="flex ">
-          <LazyLoadImageComponent
-            className="horizontal-card-img "
-            image={{
-              alt: "alt",
-              height: "",
-              width: "auto",
-              src: item?.image,
-            }}
-          />
+          <Link href={`/shop/products/${item.id}`}>
+            <a>
+              <LazyLoadImageComponent
+                className="horizontal-card-img "
+                image={{
+                  alt: "alt",
+                  height: "",
+                  width: "auto",
+                  src: item?.image,
+                }}
+              />
+            </a>
+          </Link>
+
           <div className="w-56">
-            <Link href="">
+            <Link href={`/shop/products/${item.id}`}>
               <a
                 className="hover:text-yellow-500  line-clamp-2"
                 title={item.title}

@@ -51,15 +51,20 @@ export default function ProductsSlider({
         style={{ width: 300 }}
         cover={
           <>
-            <LazyLoadImageComponent
-              className="grid-layout-img"
-              image={{
-                alt: "alt",
-                height: 250,
-                width: "auto",
-                src: item?.image,
-              }}
-            />
+            <Link href={`/shop/products/${item.id}`}>
+              <a>
+                <LazyLoadImageComponent
+                  className="grid-layout-img"
+                  image={{
+                    alt: "alt",
+                    height: 250,
+                    width: "auto",
+                    src: item?.image,
+                  }}
+                />
+              </a>
+            </Link>
+
             <div className="product-actions">
               <Space size="large">
                 <AddWishList itemToAdd={item} />
@@ -98,7 +103,7 @@ export default function ProductsSlider({
             <del className=" text-sm text-gray-500">$41.00</del>{" "}
             <span className="pl-3 text-red-500">18% off</span>
           </p>
-          <Link href="">
+          <Link href={`/shop/products/${item.id}`}>
             <a
               className="hover:text-yellow-500  line-clamp-2"
               title={item.title}

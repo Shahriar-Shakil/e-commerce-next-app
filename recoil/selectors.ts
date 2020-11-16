@@ -1,6 +1,7 @@
-import { wishlist, wishlistToCart } from "recoil/atoms";
+import { quantitySetter, wishlist, wishlistToCart } from "recoil/atoms";
 import { selector } from "recoil";
 import { cart } from "./atoms";
+import Item from "antd/lib/list/Item";
 
 const cartUpdate = selector({
   key: "cartUpdate",
@@ -21,7 +22,29 @@ const addToCartSelector = selector({
   key: "addToCartSelector",
   set: ({ get, set }, newItem) => {
     const cartState = get(cart);
-    set(cart, { ...cartState, cartItems: [...cartState.cartItems, newItem] });
+    const quantity = get(quantitySetter);
+    if (quantity) {
+      const otherProducts = cartState.cartItems.filter(
+        (item) => item.id !== newItem.id
+      );
+      const filterCartItem = cartState.cartItems
+        .filter((item) => item.id === newItem.id)
+        .map((item) => ({ ...item, quantity: item.quantity + quantity }));
+      if (filterCartItem.length) {
+        set(cart, {
+          ...cartState,
+          cartItems: [...otherProducts, ...filterCartItem],
+        });
+      } else {
+        set(cart, {
+          ...cartState,
+          cartItems: [
+            ...cartState.cartItems,
+            { ...newItem, quantity: quantity },
+          ],
+        });
+      }
+    }
   },
 });
 

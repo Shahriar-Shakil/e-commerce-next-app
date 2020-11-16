@@ -55,6 +55,7 @@ export default function QuickView({
         const filterCartItem = prev.cartItems
           .filter((fitem, i, self) => fitem.id === quickView.productId)
           .map((item) => ({ ...item, quantity: item.quantity + quantity }));
+
         if (filterCartItem.length) {
           return {
             ...prev,

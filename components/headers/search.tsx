@@ -15,7 +15,7 @@ export default function SearchBox({}: Props): ReactElement {
           Search
         </Button>
       }
-      placeholder="search..."
+      placeholder="I'm shopping for..."
       defaultValue=""
     />
   );
