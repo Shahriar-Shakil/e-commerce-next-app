@@ -25,8 +25,8 @@ export default function CartDropdown({}: Props): ReactElement {
     return (
       <div className="flex">
         <img src={item.image} alt={item.title} className="w-16 h-16 " />
-        <div className="px-5 w-9/12 ml-auto">
-          <div className="flex">
+        <div className="px-5 w-9/12 ml-auto ">
+          <div className="flex justify-between">
             <Link href={`/shop/products/${item.id}`}>
               <a className="hover:text-primary">{item.title}</a>
             </Link>

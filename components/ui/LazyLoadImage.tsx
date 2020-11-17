@@ -25,6 +25,7 @@ export default function LazyLoadImageComponent({
         src={image.src} // use normal <img> attributes as props
         width={image.width}
         effect="blur"
+        
       />
     </div>
   );

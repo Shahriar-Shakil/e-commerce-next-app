@@ -5,29 +5,17 @@ import React, { ReactElement, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useSetRecoilState } from "recoil";
 import { wishlist } from "recoil/atoms";
+import { addToWishList } from "recoil/selectors";
 
 interface Props {
   itemToAdd: object;
+  iconSize: string;
 }
 
 export default function AddWishList({ itemToAdd }: Props): ReactElement {
-  const setWishList = useSetRecoilState(wishlist);
+  const setWishList = useSetRecoilState(addToWishList);
   const handleAddWishList = () => {
-    setWishList((prev) => {
-      const alreadyHave = prev.wishlistItems.some(
-        (item) => item.id === itemToAdd.id
-      );
-      if (!alreadyHave) {
-        openNotificationWithIcon("success", "successfully added on wishlist");
-        return {
-          ...prev,
-          wishlistItems: [...prev.wishlistItems, itemToAdd],
-        };
-      }
-      return {
-        ...prev,
-      };
-    });
+    setWishList(itemToAdd);
   };
 
   return (

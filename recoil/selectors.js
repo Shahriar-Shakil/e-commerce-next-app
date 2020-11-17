@@ -1,7 +1,7 @@
 import { quantitySetter, wishlist, wishlistToCart } from "recoil/atoms";
 import { selector } from "recoil";
 import { cart } from "./atoms";
-import Item from "antd/lib/list/Item";
+import { openNotificationWithIcon } from "@lib/notification-message";
 
 const cartUpdate = selector({
   key: "cartUpdate",
@@ -48,6 +48,24 @@ const addToCartSelector = selector({
   },
 });
 
+const addToWishList = selector({
+  key: "addToWishlist",
+  set: ({ get, set }, itemToAdd) => {
+    const wishlistState = get(wishlist);
+    const alreadyHave = wishlistState.wishlistItems.some(
+      (item) => item.id === itemToAdd.id
+    );
+    if (!alreadyHave) {
+      openNotificationWithIcon("success", "successfully added on wishlist");
+      set(wishlist, {
+        ...wishlistState,
+        wishlistItems: [...wishlistState.wishlistItems, itemToAdd],
+      });
+    } else {
+      openNotificationWithIcon("warning", "warning", "Already In Wishlist");
+    }
+  },
+});
 const wishListSelector = selector({
   key: "wishListSelector",
   get: ({ get }) => {
@@ -58,4 +76,4 @@ const wishListSelector = selector({
     };
   },
 });
-export { cartUpdate, wishListSelector, addToCartSelector };
+export { cartUpdate, wishListSelector, addToCartSelector, addToWishList };

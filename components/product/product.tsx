@@ -10,10 +10,11 @@ import {
   AiFillGooglePlusSquare,
   AiFillPlaySquare,
   AiFillTwitterSquare,
+  AiOutlineHeart,
 } from "react-icons/ai";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { cart, quantitySetter } from "recoil/atoms";
-import { addToCartSelector } from "recoil/selectors";
+import { addToCartSelector, addToWishList } from "recoil/selectors";
 
 interface Props {}
 
@@ -32,6 +33,11 @@ export default function SingleProductView({}: Props): ReactElement {
     addToCart(item);
     setQuantity(1);
   };
+  const setWishList = useSetRecoilState(addToWishList);
+  const handleAddWishList = () => {
+    setWishList(item);
+  };
+
   return (
     <div className="grid grid-cols-6 gap-5 my-8">
       <div className="flex items-start justify-between col-span-5">
@@ -91,6 +97,14 @@ export default function SingleProductView({}: Props): ReactElement {
                   className="bg-primary border-none text-black px-5 font-bold text-lg hover:bg-black hover:text-white"
                 >
                   Buy Now
+                </Button>
+                <Button
+                  type="text"
+                  size="large"
+                  className=" text-gray-500  hover:bg-transparent"
+                  onClick={handleAddWishList}
+                >
+                  <AiOutlineHeart className="ml-7px" size="32" />
                 </Button>
               </Space>
               <Divider />
