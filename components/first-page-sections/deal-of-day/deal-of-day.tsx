@@ -16,9 +16,9 @@ export default function DealOfDay({}: Props): ReactElement {
   return (
     <>
       <section className="">
-        <div className="flex justify-between items-center">
-          <Space size={30}>
-            <Title level={3} className="font-thin m-0">
+        <div className="flex justify-between lg:justify-between items-center">
+          <Space size={30} className="inline-flex">
+            <Title level={3} className="font-thin m-0 text-base lg:text-xl">
               Deal of the Day
             </Title>
             <Countdown title="End in:" value={deadline} onFinish={onFinish} />

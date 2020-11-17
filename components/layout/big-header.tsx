@@ -18,6 +18,7 @@ import UserActionsGroup from "@components/headers/user-actions-group";
 import DepartmentList from "@components/headers/department-list";
 import Logo from "@components/ui/logo";
 import NavigationDropdown from "@components/headers/navigation-dropdown";
+import AntMenuHorizontal from "@components/headers/menu";
 
 const { Header: AntHeader } = AntLayout;
 
@@ -26,7 +27,7 @@ interface Props {}
 export default function BigHeader({}: Props): ReactElement {
   return (
     <AntHeader
-      className="bg-primary "
+      className="bg-primary px-4 lg:px-24"
       style={{
         position: "",
         zIndex: 1,
@@ -35,15 +36,15 @@ export default function BigHeader({}: Props): ReactElement {
         height: "auto",
       }}
     >
-      <div className="flex items-center py-5 justify-between">
-        <div className="w-1/2    lg:w-1/5">
+      <div className="grid grid-cols-2  lg:flex items-center py-2 lg:py-5 justify-between">
+        <div className=" w-full   lg:w-1/5">
           <Logo />
         </div>
         {/* <DepartmentList /> */}
-        <div className="search flex-1 flex items-center  hidden lg:flex">
+        <div className="search col-span-2  flex-1  items-center   lg:flex">
           <SearchBox />
         </div>
-        <div className="actions w-1/2  flex  justify-center lg:w-1/5">
+        <div className="actions w-full col-start-2 row-start-1  lg:flex  justify-center lg:w-1/5">
           <UserActionsGroup />
         </div>
       </div>
@@ -54,7 +55,7 @@ export default function BigHeader({}: Props): ReactElement {
         </div>
         <div className="flex w-4/5 ">
           <div className="left-nav">
-            <NavigationDropdown />
+            <AntMenuHorizontal />
           </div>
           <div className="right-nav ml-auto">
             <a href="" className="text-black ">

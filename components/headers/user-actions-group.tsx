@@ -18,7 +18,7 @@ export default function UserActionsGroup({}: Props): ReactElement {
   const cartState = useRecoilValue(cartUpdate);
   const wishListState = useRecoilValue(wishListSelector);
   return (
-    <Space size={20}>
+    <Space size={20} className="float-right">
       <Badge
         count={wishListState?.wishlistTotal}
         className="block hover:text-white"
@@ -42,7 +42,7 @@ export default function UserActionsGroup({}: Props): ReactElement {
           </a>
         </Dropdown>
       </Badge>
-      <div className="flex items-center">
+      <div className="hidden lg:flex items-center">
         <UserPlaceholder />
         <span>
           <Link href="">

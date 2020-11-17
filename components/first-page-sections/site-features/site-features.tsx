@@ -10,11 +10,11 @@ interface Props {}
 
 export default function SiteFeatures({}: Props): ReactElement {
   return (
-    <div className="site-features border my-5  px-10">
-      <div className="flex py-4">
-        <div className="item border-r pr-10">
-          <div className="flex  p-2 items-center">
-            <div className="block-left text-yellow-500">
+    <div className="site-features border my-5  lg:px-10">
+      <div className="grid grid-cols-3 lg:flex py-4">
+        <div className="item lg:border-r lg:pr-10">
+          <div className="flex flex-col lg:flex-row  p-2 items-center">
+            <div className=" lg:block-left text-primary pb-4 lg:pb-0">
               <VscRocket size="46" />
             </div>
             <div className="block-right pl-10 font-16">
@@ -25,9 +25,9 @@ export default function SiteFeatures({}: Props): ReactElement {
             </div>
           </div>
         </div>
-        <div className="item border-r px-10">
-          <div className="flex  p-2 items-center">
-            <div className="block-left text-yellow-500">
+        <div className="item  lg:border-r lg:px-10">
+          <div className="flex flex-col lg:flex-row  p-2 items-center">
+            <div className="block-left text-primary pb-4 lg:pb-0">
               <AiOutlineSync size="46" />
             </div>
             <div className="block-right pl-10 font-16">
@@ -38,9 +38,9 @@ export default function SiteFeatures({}: Props): ReactElement {
             </div>
           </div>
         </div>
-        <div className="item border-r px-10">
-          <div className="flex  p-2 items-center">
-            <div className="block-left text-yellow-500">
+        <div className="item  lg:border-r lg:px-10">
+          <div className="flex flex-col lg:flex-row p-2 items-center">
+            <div className="block-left text-primary pb-4 lg:pb-0">
               <AiOutlineCreditCard size="46" />
             </div>
             <div className="block-right pl-10 font-16">
@@ -51,9 +51,9 @@ export default function SiteFeatures({}: Props): ReactElement {
             </div>
           </div>
         </div>
-        <div className="item border-r px-10">
-          <div className="flex  p-2 items-center">
-            <div className="block-left text-yellow-500">
+        <div className="item   lg:border-r lg:px-10">
+          <div className="flex flex-col lg:flex-row p-2 items-center">
+            <div className="block-left text-primary pb-4 lg:pb-0">
               <ImBubbles3 size="46" />
             </div>
             <div className="block-right pl-10 font-16">
@@ -64,9 +64,9 @@ export default function SiteFeatures({}: Props): ReactElement {
             </div>
           </div>
         </div>
-        <div className="item  pl-10">
-          <div className="flex  p-2 items-center">
-            <div className="block-left text-yellow-500">
+        <div className="item  lg:pl-10">
+          <div className="flex flex-col lg:flex-row p-2 items-center">
+            <div className="block-left text-primary pb-4 lg:pb-0">
               <AiOutlineGift size="46" />
             </div>
             <div className="block-right pl-10 font-16">

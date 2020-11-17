@@ -18,6 +18,7 @@ import Link from "next/link";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import QuickView from "./Quick-view";
 import AddWishList from "./add-wish-list";
+import useWindowSize from "@lib/useWindowSize";
 
 const { Title } = Typography;
 interface Props {
@@ -29,13 +30,15 @@ export default function ProductsSlider({
   products,
   loading,
 }: Props): ReactElement {
+  const { width } = useWindowSize();
+  const sm = width < 640 ? true : false;
   var settings = {
-    dots: false,
+    dots: sm ? true : false,
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: sm ? 3 : 7,
     slidesToScroll: 3,
-    arrows: true,
+    arrows: sm ? false : true,
     className: "myCustomCarousel",
   };
   const [quickView, setQuickView] = useState({

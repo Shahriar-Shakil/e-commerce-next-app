@@ -55,6 +55,12 @@
   right: -3% !important;
   z-index: 1;
 }
+.slick-dots li button:before {
+  font-size: 12px;
+}
+.slick-dots li.slick-active button:before {
+  color: #e68100;
+}
 /* .slick-slide {
     overflow: hidden;
     width: 300px !important;
@@ -113,4 +119,14 @@ hr.full {
 }
 .ant-dropdown {
   z-index: 1000000 !important;
+}
+.ant-menu-item-group {
+  float: left !important;
+}
+.ant-menu-light > .ant-menu-submenu {
+  margin: 0 0px !important;
+}
+.ant-menu-item-group-title {
+  color: black !important;
+  font-weight: bold !important;
 }

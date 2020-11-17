@@ -52,6 +52,7 @@ export default function SingleProductView({}: Props): ReactElement {
             }}
           />
         </div>
+
         {loading ? (
           <Skeleton paragraph={{ rows: 20 }} />
         ) : (

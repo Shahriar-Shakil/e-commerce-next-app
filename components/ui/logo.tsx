@@ -8,7 +8,7 @@ export default function Logo({}: Props): ReactElement {
   return (
     <Link href="/">
       <a>
-        <Title level="2" className="mb-0">
+        <Title level="2" className="mb-0 text-4xl lg:text-5xl">
           mart<span className="text-white">next</span>
         </Title>
       </a>
