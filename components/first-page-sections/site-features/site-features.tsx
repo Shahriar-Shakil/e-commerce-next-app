@@ -11,7 +11,7 @@ interface Props {}
 export default function SiteFeatures({}: Props): ReactElement {
   return (
     <div className="site-features border my-5  lg:px-10">
-      <div className="grid grid-cols-3 lg:flex py-4">
+      <div className="grid auto-cols-fr md:grid-cols-4 lg:flex py-4">
         <div className="item lg:border-r lg:pr-10">
           <div className="flex flex-col lg:flex-row  p-2 items-center">
             <div className=" lg:block-left text-primary pb-4 lg:pb-0">

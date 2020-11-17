@@ -48,7 +48,7 @@ export default function BigHeader({}: Props): ReactElement {
           <UserActionsGroup />
         </div>
       </div>
-      <hr className="full border-gray-800 my-0" />
+      <hr className="full hidden lg:block border-gray-800 my-0" />
       <div className=" hidden lg:flex items-center   small-header">
         <div className="w-1/5 ">
           <DepartmentList />

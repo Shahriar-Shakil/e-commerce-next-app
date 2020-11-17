@@ -12,8 +12,8 @@ interface Props {}
 
 export default function Contacts({}: Props): ReactElement {
   return (
-    <div className="grid grid-cols-5 gap-8">
-      <div className="col-span-2   w-64">
+    <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8">
+      <div className="col-span-1 lg:col-span-2  w-full">
         <div className="py-5">
           <h4 className="font-bold text-base m-0">Contacts us</h4>
         </div>

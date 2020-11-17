@@ -65,5 +65,5 @@ export default function ProductHorizontal({
       </Card>
     );
   });
-  return <div className="grid grid-cols-4 ">{items}</div>;
+  return <div className="grid grid-cols-1 lg:grid-cols-4 ">{items}</div>;
 }

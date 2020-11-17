@@ -5,7 +5,7 @@ import FixedHeader from "./header";
 import { Scrollbar } from "@components/ui/scrollbar";
 import BigHeader from "./big-header";
 import useWindowPosition from "@lib/useWindowPosition";
-import useWindowSize from "@lib/useWindowSize";
+import useReactMatchMedia from "react-simple-matchmedia";
 
 const { Content, Footer } = AntLayout;
 
@@ -15,12 +15,11 @@ interface Props {
 }
 
 export default function Layout({ children, className }: Props): ReactElement {
+  const matchPhone = useReactMatchMedia("phone");
   const scrollPosition = useWindowPosition();
   const [fixedHeader, setFixedHeader] = useState(false);
-  const size = useWindowSize();
-  console.log(size, "www");
   useEffect(() => {
-    if (scrollPosition > 250 && size.width > 1024) {
+    if (scrollPosition > 250 && !matchPhone) {
       setFixedHeader(true);
     } else if (scrollPosition === 0) {
       setFixedHeader(false);

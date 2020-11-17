@@ -17,6 +17,7 @@ import Link from "next/link";
 import QuickView from "./Quick-view";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import AddWishList from "./add-wish-list";
+import useReactMatchMedia from "react-simple-matchmedia";
 
 const { Title } = Typography;
 interface Props {
@@ -28,6 +29,8 @@ export default function ProductGrid({
   products,
   loading,
 }: Props): ReactElement {
+  const matchPhone = useReactMatchMedia("phone");
+
   const [quickView, setQuickView] = useState({
     visibility: false,
     productId: "",
@@ -56,7 +59,7 @@ export default function ProductGrid({
             </Link>
 
             <div className="product-actions">
-              <Space size="large">
+              <Space size={matchPhone ? "small" : "large"}>
                 <AddWishList itemToAdd={item} />
                 <Button
                   onClick={() => handleQuickView(item.id)}
@@ -114,7 +117,7 @@ export default function ProductGrid({
     );
   });
   return (
-    <div className="grid grid-cols-7 ">
+    <div className="grid grid-cols-2  lg:grid-cols-7 ">
       {items}
       <>
         <QuickView quickView={quickView} setQuickView={setQuickView} />

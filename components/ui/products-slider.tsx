@@ -18,7 +18,7 @@ import Link from "next/link";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import QuickView from "./Quick-view";
 import AddWishList from "./add-wish-list";
-import useWindowSize from "@lib/useWindowSize";
+import useReactMatchMedia from "react-simple-matchmedia";
 
 const { Title } = Typography;
 interface Props {
@@ -30,15 +30,15 @@ export default function ProductsSlider({
   products,
   loading,
 }: Props): ReactElement {
-  const { width } = useWindowSize();
-  const sm = width < 640 ? true : false;
+  const matchPhone = useReactMatchMedia("phone");
+
   var settings = {
-    dots: sm ? true : false,
+    dots: matchPhone ? true : false,
     infinite: true,
     speed: 500,
-    slidesToShow: sm ? 3 : 7,
+    slidesToShow: matchPhone ? 2 : 7,
     slidesToScroll: 3,
-    arrows: sm ? false : true,
+    arrows: matchPhone ? false : true,
     className: "myCustomCarousel",
   };
   const [quickView, setQuickView] = useState({

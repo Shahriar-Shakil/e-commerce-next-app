@@ -1,19 +1,19 @@
 import React, { ReactElement } from "react";
 import { Button, Input, Select } from "antd";
-import useWindowSize from "@lib/useWindowSize";
 import { AiOutlineSearch } from "react-icons/ai";
+import useReactMatchMedia from "react-simple-matchmedia";
 
 const { Option } = Select;
 
 interface Props {}
 
 export default function SearchBox({}: Props): ReactElement {
-  const { width } = useWindowSize();
+  const matchPhone = useReactMatchMedia("phone");
   return (
     <Input
       className="m-2 lg:m-0"
       size="large"
-      addonBefore={width < 600 ? null : selectBefore}
+      addonBefore={matchPhone ? null : selectBefore}
       addonAfter={
         <Button
           size="large"

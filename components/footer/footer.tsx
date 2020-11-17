@@ -8,7 +8,7 @@ interface Props {}
 export default function Footer({}: Props): ReactElement {
   return (
     <footer>
-      <hr className="full" />
+      <hr className="" />
       <Contacts />
       <hr className="my-5" />
       <CopyRight />
