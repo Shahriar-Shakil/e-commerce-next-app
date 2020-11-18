@@ -26,7 +26,7 @@ export default function Breadcrumb({}: Props): ReactElement {
   });
 
   return (
-    <AntBreadcrumb className="bg-gray-200 px-56 py-4">
+    <AntBreadcrumb className=" px-2 py-4">
       <AntBreadcrumb.Item>
         <Link href="/">
           <a className="">HOME</a>

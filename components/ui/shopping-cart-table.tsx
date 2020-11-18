@@ -73,9 +73,16 @@ export default function ShoppingCartTable({}: Props): ReactElement {
       title: "PRODUCT",
       dataIndex: "",
       key: "product",
+      width: "400px",
+      className: "fixedWidth",
+      // fixed: true,
+      // responsive: ["xs"],
       render: (text, record) => {
         return (
-          <div className="flex">
+          <div
+            className="flex"
+            // style={{ wordWrap: "break-word", wordBreak: "break-word" }}
+          >
             <img src={record.image} alt={record.title} className="w-12" />
             <div className="px-8 max-w-lg w-32 flex-grow">
               <Link href="">
@@ -151,6 +158,7 @@ export default function ShoppingCartTable({}: Props): ReactElement {
       dataSource={cartState.cartItems}
       columns={columns}
       pagination={false}
+      scroll={{ x: true }}
       // scroll={{ y: 500 }}
     />
   );

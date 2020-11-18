@@ -19,7 +19,7 @@ export default function Layout({ children, className }: Props): ReactElement {
   const scrollPosition = useWindowPosition();
   const [fixedHeader, setFixedHeader] = useState(false);
   useEffect(() => {
-    if (scrollPosition > 250 && !matchPhone) {
+    if (scrollPosition > 250) {
       setFixedHeader(true);
     } else if (scrollPosition === 0) {
       setFixedHeader(false);
@@ -31,7 +31,7 @@ export default function Layout({ children, className }: Props): ReactElement {
       {fixedHeader ? <FixedHeader /> : <BigHeader />}
 
       <Content
-        className={`bg-white ${className} px-4 lg:px-24`}
+        className={`bg-white ${className} px-0 lg:px-24`}
         // style={{ padding: "0 100px", marginTop: 64 }}
         style={{
           padding: "0 100px",

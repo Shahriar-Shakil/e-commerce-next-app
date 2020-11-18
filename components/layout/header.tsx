@@ -13,7 +13,7 @@ interface Props {}
 export default function FixedHeader({}: Props): ReactElement {
   return (
     <AntHeader
-      className="bg-primary flex items-center py-2"
+      className="bg-primary hidden lg:flex items-center py-2"
       style={{
         position: "fixed",
         zIndex: 1,

@@ -12,10 +12,12 @@ interface Props {}
 
 export default function Wrapper({}: Props): ReactElement {
   return (
-    <section className="w-full">
+    <section className="w-full px-2">
       <div className="container mx-auto">
         <div className="my-3">
-          <h1 className="text-center text-5xl mb-0 font-bold">Shopping Cart</h1>
+          <h1 className="text-center text-base  lg:text-5xl mb-0 font-bold">
+            Shopping Cart
+          </h1>
         </div>
         <div>
           <ShoppingCartTable />

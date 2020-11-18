@@ -56,10 +56,10 @@
   z-index: 1;
 }
 .slick-dots li button:before {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .slick-dots li.slick-active button:before {
-  color: #e68100;
+  color: #e68100 !important;
 }
 /* .slick-slide {
     overflow: hidden;
@@ -107,7 +107,7 @@
   color: #666666;
 }
 hr.full {
-  margin: 20px -10000px;
+  /* margin: 20px -10000px; */
 }
 .grid-layout-img img {
   height: 250px;
@@ -129,4 +129,10 @@ hr.full {
 .ant-menu-item-group-title {
   color: black !important;
   font-weight: bold !important;
+}
+
+/* ant table */
+td.ant-table-cell.fixedWidth {
+  display: block;
+  width: 400px;
 }

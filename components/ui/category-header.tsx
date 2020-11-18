@@ -13,7 +13,7 @@ export default function CategoryHeader({ title }: Props): ReactElement {
       title={<h3 className="m-0 pl-3 font-bold">{title}</h3>}
       //   subTitle="This is a subtitle"
       extra={
-        <Space>
+        <Space className="grid grid-cols-2 lg:flex">
           <Button type="text" className="text-yellow-600">
             New Arivals
           </Button>

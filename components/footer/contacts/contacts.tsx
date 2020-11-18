@@ -19,11 +19,11 @@ export default function Contacts({}: Props): ReactElement {
         </div>
         <div className="">
           <p className="m-0 text-gray-500">Call us 24/7</p>
-          <h3 className="my-4 font-bold text-2xl text-primary">
+          <h3 className=" lg:my-4 font-bold text-base lg:text-2xl text-primary">
             1800 97 97 69
           </h3>
           <p>502 New Design Str, Melbourne, Australia contact@martfury.co</p>
-          <Space size={"large"} className="pt-8">
+          <Space size={"large"} className="lg:pt-8">
             <a href="" className="text-blue-500">
               <AiOutlineFacebook size={24} />
             </a>
@@ -33,7 +33,7 @@ export default function Contacts({}: Props): ReactElement {
             <a href="" className="text-red-400">
               <AiOutlineInstagram size={24} />
             </a>
-            <a href="" className="text-red-700">
+            <a href="" className="text-red-700 hidden lg:inline">
               <AiOutlineGooglePlus size={24} />
             </a>
           </Space>

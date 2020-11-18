@@ -18,7 +18,7 @@ export default function TotalShopping({}: Props): ReactElement {
     );
   });
   return (
-    <Card className="w-1/3 ml-auto border-none">
+    <Card className="w-full lg:w-1/3 ml-auto mb-3 border-none">
       <div className="border">
         <div className="bg-gray-100 p-5">
           <div>
