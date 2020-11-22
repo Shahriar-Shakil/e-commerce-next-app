@@ -11,6 +11,7 @@ module.exports = {
         "accent-1": "#333",
         primary: "#ffba00",
         danger: "#ff0000",
+        light: "#f5f5f5",
       },
     },
   },

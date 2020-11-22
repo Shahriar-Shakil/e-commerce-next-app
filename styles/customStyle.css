@@ -136,3 +136,7 @@ td.ant-table-cell.fixedWidth {
   display: block;
   width: 400px;
 }
+/* ant slider */
+.ant-slider-rail {
+  background-color: #e6e6e6 !important;
+}

@@ -16,14 +16,13 @@ function Home({}: Props): ReactElement {
   return (
     <>
       <Layout>
-        {/* <Banner /> */}
+        <Banner />
         <SiteFeatures />
         <DealOfDay />
         <HomeAd />
         <ClothingSection />
         <ElectronicsSection />
         <HotArrivalsSection />
-
         <Footer />
       </Layout>
     </>

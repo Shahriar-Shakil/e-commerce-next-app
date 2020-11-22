@@ -13,7 +13,7 @@ export default function ClothingSection({}: Props): ReactElement {
   );
   return (
     <section className="my-5">
-      <CategoryHeader title={"Clothings"} />
+      <CategoryHeader title={"All"} />
       <ProductGrid loading={loading} products={clothingsProduct?.slice(0, 7)} />
     </section>
   );

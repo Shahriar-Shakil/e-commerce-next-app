@@ -10,7 +10,7 @@ export default function Banner({}: Props): ReactElement {
       <div className="col-span-4 row-span-2 lg:col-span-3 sm:col-span-2">
         <BannerCarousel />
       </div>
-      <div className="md:col-span-2 lg:col-span-1">
+      <div className="md:col-span-2  lg:col-span-1">
         <LazyLoadImageComponent
           className=" "
           image={{

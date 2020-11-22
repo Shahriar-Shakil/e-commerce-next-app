@@ -18,6 +18,9 @@ import QuickView from "./Quick-view";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import AddWishList from "./add-wish-list";
 import useReactMatchMedia from "react-simple-matchmedia";
+import { useSetRecoilState } from "recoil";
+import { addToCartSelector } from "recoil/selectors";
+import { openNotificationWithIcon } from "@lib/notification-message";
 
 const { Title } = Typography;
 interface Props {
@@ -30,13 +33,21 @@ export default function ProductGrid({
   loading,
 }: Props): ReactElement {
   const matchPhone = useReactMatchMedia("phone");
-
+  const addToCart = useSetRecoilState(addToCartSelector);
   const [quickView, setQuickView] = useState({
     visibility: false,
     productId: "",
   });
   const handleQuickView = (id) =>
     setQuickView({ visibility: true, productId: id });
+  const handleAddToCart = (item) => {
+    console.log("working");
+    openNotificationWithIcon(
+      "success",
+      "This product has been added to your cart!"
+    );
+    addToCart(item);
+  };
   const items = products?.map((item) => {
     return (
       <Card
@@ -79,6 +90,7 @@ export default function ProductGrid({
                        hover:text-white
                        hover:bg-primary"
                   shape="circle"
+                  onClick={() => handleAddToCart(item)}
                 >
                   <AiOutlineShopping className="ml-7px" size="24" />
                 </Button>

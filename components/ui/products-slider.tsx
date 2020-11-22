@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from "react";
-import Head from "next/head";
 import {
   Button,
   Card,
@@ -12,13 +11,16 @@ import {
   Typography,
 } from "antd";
 import { AiFillEye, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
-import Slider from "react-slick";
 import Link from "next/link";
 // import QuickView from "./Quick-view";
 import LazyLoadImageComponent from "./LazyLoadImage";
 import QuickView from "./Quick-view";
 import AddWishList from "./add-wish-list";
 import useReactMatchMedia from "react-simple-matchmedia";
+import SlickSlider from "./slick-slider";
+import { openNotificationWithIcon } from "@lib/notification-message";
+import { useSetRecoilState } from "recoil";
+import { addToCartSelector } from "recoil/selectors";
 
 const { Title } = Typography;
 interface Props {
@@ -31,6 +33,7 @@ export default function ProductsSlider({
   loading,
 }: Props): ReactElement {
   const matchPhone = useReactMatchMedia("phone");
+  const addToCart = useSetRecoilState(addToCartSelector);
 
   var settings = {
     dots: matchPhone ? true : false,
@@ -47,6 +50,14 @@ export default function ProductsSlider({
   });
   const handleQuickView = (id) =>
     setQuickView({ visibility: true, productId: id });
+  const handleAddToCart = (item) => {
+    console.log("working");
+    openNotificationWithIcon(
+      "success",
+      "This product has been added to your cart!"
+    );
+    addToCart(item);
+  };
   const items = products?.map((item) => {
     return (
       <Card
@@ -89,6 +100,7 @@ export default function ProductsSlider({
                        hover:text-white
                        hover:bg-primary"
                   shape="circle"
+                  onClick={() => handleAddToCart(item)}
                 >
                   <AiOutlineShopping className="ml-7px" size="24" />
                 </Button>
@@ -128,21 +140,7 @@ export default function ProductsSlider({
   });
   return (
     <>
-      {" "}
-      <Head>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charset="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-      </Head>{" "}
-      <Slider {...settings}>{items}</Slider>
+      <SlickSlider settings={settings}>{items}</SlickSlider>
       <QuickView quickView={quickView} setQuickView={setQuickView} />
     </>
   );

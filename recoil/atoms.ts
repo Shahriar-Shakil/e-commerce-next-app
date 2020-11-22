@@ -24,5 +24,29 @@ const wishlistToCart = atom({
   key: "wishlistToCart",
   default: null,
 });
-
-export { auth, cart, wishlist, quantitySetter, updateQuantity, wishlistToCart };
+const priceRangeAtom = atom({
+  key: "priceRangeAtom",
+  default: {
+    max: 1000,
+    min: 1,
+  },
+});
+const productsStore = atom({
+  key: "productStore",
+  default: [],
+});
+const categories = atom({
+  key: "categories",
+  default: "all",
+});
+export {
+  auth,
+  cart,
+  wishlist,
+  quantitySetter,
+  updateQuantity,
+  wishlistToCart,
+  priceRangeAtom,
+  productsStore,
+  categories,
+};

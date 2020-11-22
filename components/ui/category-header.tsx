@@ -1,4 +1,5 @@
 import { Button, PageHeader, Space } from "antd";
+import Router from "next/router";
 import React, { ReactElement } from "react";
 
 interface Props {
@@ -19,7 +20,14 @@ export default function CategoryHeader({ title }: Props): ReactElement {
           </Button>
           <Button type="text">Best seller</Button>
           <Button type="text">Most Popular</Button>
-          <Button type="text">View All</Button>
+          <Button
+            type="text"
+            onClick={() =>
+              Router.push("/shop").then(() => window.scrollTo(0, 0))
+            }
+          >
+            View All
+          </Button>
         </Space>
       }
     />

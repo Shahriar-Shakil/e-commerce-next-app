@@ -1,6 +1,6 @@
 import { quantitySetter, wishlist, wishlistToCart } from "recoil/atoms";
 import { selector } from "recoil";
-import { cart } from "./atoms";
+import { cart, priceRangeAtom, productsStore, categories } from "./atoms";
 import { openNotificationWithIcon } from "@lib/notification-message";
 
 const cartUpdate = selector({
@@ -76,4 +76,43 @@ const wishListSelector = selector({
     };
   },
 });
-export { cartUpdate, wishListSelector, addToCartSelector, addToWishList };
+const filterProductsByPrice = selector({
+  key: "filterProductsByPrice",
+  set: ({ get, set }, payload) => {
+    const currentCategory = get(categories);
+    const filterByRange = payload.allProducts?.filter((x) => {
+      if (currentCategory === x.category) {
+        return x.price >= payload.min && x.price <= payload.max;
+      } else if (currentCategory === "all") {
+        return x.price >= payload.min && x.price <= payload.max;
+      }
+    });
+    set(productsStore, [...filterByRange]);
+    set(priceRangeAtom, { ...priceRangeAtom, ...payload });
+  },
+});
+const filterProductsByCategories = selector({
+  key: "filterProductsByCategories",
+  set: ({ set }, payload) => {
+    if (payload.category === "all") {
+      return [
+        set(productsStore, payload.products),
+        set(categories, payload.category),
+      ];
+    }
+    const filterByCategory = payload.products?.filter(
+      (item) => item.category === payload.category
+    );
+
+    set(productsStore, filterByCategory);
+    set(categories, payload.category);
+  },
+});
+export {
+  cartUpdate,
+  wishListSelector,
+  addToCartSelector,
+  addToWishList,
+  filterProductsByPrice,
+  filterProductsByCategories,
+};

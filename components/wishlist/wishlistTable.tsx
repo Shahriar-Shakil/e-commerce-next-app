@@ -6,11 +6,7 @@ import React, { ReactElement } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { cart, wishlist, wishlistToCart } from "recoil/atoms";
-import {
-  addToCartSelector,
-  cartUpdate,
-  wishListSelector,
-} from "recoil/selectors";
+import { addToCartSelector } from "recoil/selectors";
 
 interface Props {}
 
@@ -48,6 +44,8 @@ export default function WishlistTable({}: Props): ReactElement {
     {
       title: "PRODUCT NAME",
       key: "product_name",
+      width: "400px",
+      className: "fixedWidth",
       render: (text, record) => {
         return (
           <div className="flex">
@@ -103,12 +101,15 @@ export default function WishlistTable({}: Props): ReactElement {
     <section className="w-full">
       <div className="container mx-auto">
         <div className="my-3">
-          <h1 className="text-center text-5xl mb-0 font-bold">Wishlist</h1>
+          <h1 className="text-center text-base  lg:text-5xl mb-0 font-bold">
+            Wishlist
+          </h1>
         </div>
         <div>
           <Table
             pagination={false}
             columns={columns}
+            scroll={{ x: true }}
             dataSource={wishListState.wishlistItems}
           />
         </div>
