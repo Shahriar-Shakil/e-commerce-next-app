@@ -1,4 +1,6 @@
 import CartDropdown from "@components/ui/cart-dropdown";
+import useUser from "@data/use-user";
+import { logout } from "@lib/authenticate";
 import { Badge, Button, Dropdown, Menu, Space } from "antd";
 import Link from "next/link";
 import React, { ReactElement } from "react";
@@ -11,12 +13,18 @@ import { useRecoilValue } from "recoil";
 import { cart } from "recoil/atoms";
 import { cartUpdate, wishListSelector } from "recoil/selectors";
 import UserPlaceholder from "svgr/user-placeholder";
+import { mutate } from "swr";
 
 interface Props {}
 
 export default function UserActionsGroup({}: Props): ReactElement {
   const cartState = useRecoilValue(cartUpdate);
   const wishListState = useRecoilValue(wishListSelector);
+  const { user, mutateUser } = useUser();
+  const handleLogout = () => {
+    logout();
+    mutateUser();
+  };
   return (
     <Space size={20} className="float-right">
       <Badge
@@ -44,15 +52,43 @@ export default function UserActionsGroup({}: Props): ReactElement {
       </Badge>
       <div className="hidden lg:flex items-center">
         <UserPlaceholder />
-        <span>
-          <Link href="">
-            <a className="text-black font-bold hover:text-white">Login</a>
-          </Link>{" "}
-          |{" "}
-          <Link href="">
-            <a className="text-black font-bold hover:text-white">Register</a>
-          </Link>
-        </span>
+        {user ? (
+          <>
+            <Dropdown
+              placement="bottomCenter"
+              overlay={
+                <Menu className="w-48">
+                  <Menu.Item>
+                    <Button
+                      block
+                      size="large"
+                      className="border-none bg-black text-white"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </Button>
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <a href="">{user?.name?.firstname}</a>
+            </Dropdown>{" "}
+          </>
+        ) : (
+          <>
+            <span>
+              <Link href="/my-account">
+                <a className="text-black font-bold hover:text-white">Login</a>
+              </Link>{" "}
+              |{" "}
+              <Link href="/my-account">
+                <a className="text-black font-bold hover:text-white">
+                  Register
+                </a>
+              </Link>
+            </span>
+          </>
+        )}
       </div>
     </Space>
   );
